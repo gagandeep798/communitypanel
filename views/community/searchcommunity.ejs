@@ -1,0 +1,82 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ../partials/head %>
+    <link rel="stylesheet" href="../css/topnav.css" />
+</head>
+
+<body class="container-fluid">
+    <header>
+        <%- include ../partials/header %>
+    </header>
+    <div class="row">
+        <div class="col-sm-2">
+            <%- include ../partials/navbar %>
+        </div>
+        <div class="col-sm-10">
+            <div style="background-color: whitesmoke;height:100%;">
+                <main>
+                    <div class="rows col-sm-12">
+                        <div class="cols col-sm-8">
+                            <a href="/home" role='button' class="btn btn-primary">Community</a>
+                            <a href="/searchcommunity" class="btn btn-primary" role='button'>Search</a>
+                        </div>
+                        <div class="cols col-sm-4" align="right">
+                            <form method="post" action="/searchcommunity">
+                                <input type="text" placeholder="Search.." name="search"><button class="btn btn-info"
+                                    role="button" type="submit">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div align="center">
+                        <p style="font-size: larger;color: red;">
+                            <%=msg%>
+                        </p>
+                    </div>
+                    <div class="jumbotron">
+                        <% comms.forEach(function(comm) { %>
+                        <div class="responsive-login-form allSides col-sm-12">
+                            <div class="panel-group col-sm-12">
+                                <div class="panel panel-info col-sm-12">
+                                    <div class="panel-heading rows">
+                                        <a href="/communityprofile/<%=comm._id%>" style="color: blue;font-size: medium;"
+                                            id="<%= comm._Id%>">
+                                            <%= comm.name %></a>
+                                        <a style="font-size:small;"><span class="label label-success">Members
+                                                <%=comm.memberlen%></span></a>
+                                        <div align="right">
+                                            <% if (comm.rule==='Direct') { %>
+                                            <a href="/joincommunity/<%=comm._id%>" class="btn btn-primary" role="button"
+                                                id="<%= comm._Id%>">Join</a>
+                                            <% } %>
+                                            <% if (comm.rule==='Permission') { %>
+                                            <a href="/asktojoincommunity/<%=comm._id%>" class="btn btn-primary" role="button"
+                                                id="<%= comm._Id%>">Ask
+                                                to Join</a>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <p style="color:black">
+                                            <%= comm.desc %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <%- include ../partials/footer %>
+    </footer>
+
+</body>
+
+</html>

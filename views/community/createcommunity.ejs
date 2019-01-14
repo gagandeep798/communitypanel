@@ -1,0 +1,71 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ../partials/head %>
+</head>
+
+<body class="container-fluid">
+    <header>
+        <%- include ../partials/header %>
+    </header>
+    <div class="row">
+        <div class="col-sm-2">
+            <%- include ../partials/navbar %>
+        </div>
+        <div class="col-sm-10">
+            <div class="col-sm-9" style="height: 100%;background-color:whitesmoke;">
+                <main>
+                    <p>
+                        <%=msg%>
+                    </p>
+                    <div class="responsive-login-form allSides col-sm-12">
+                        <div align="center">
+                            <p style="padding: 1%;font-size: 34px;">Create Community</p>
+                        </div>
+                        <div class="col-sm-12" style="border: blue">
+                            <% if (user.role!='User') { %>
+                            <form method="post" action="/createcommunity">
+                                <div class="col-sm-12">
+                                    <div class="panel-group col-sm-12">
+                                        <div class="panel panel-default col-sm-12">
+                                            <div class="panel-heading">Name:</div>
+                                            <div class="panel-body">
+                                                <input type="text" required="" name="name" class="form-control col-sm-12"
+                                                    placeholder="cname">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm-12" style="margin: 10px">
+                                            <textarea required="" name="desc" rows="12" cols="80" placeholder="Description"></textarea><br />
+                                        </div>
+                                        <div class="form-group col-sm-12">
+                                            <label style="color:#707070">Rule :</label>
+                                            <input class="radio radio-inline" type="radio" checked value="Direct" name="rule">
+                                            Direct
+                                            <input class="radio radio-inline" type="radio" value="Permission" name="rule">
+                                            Permission
+                                        </div>
+                                        <br>
+                                        <div class="col-sm-8">
+                                            <input class="btn btn-success" type='submit' value='submit' />
+                                            <a class="btn btn-danger" role="button" href="/createcommunity">Cancel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <% } %>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <%- include ../partials/footer %>
+    </footer>
+
+</body>
+
+</html>

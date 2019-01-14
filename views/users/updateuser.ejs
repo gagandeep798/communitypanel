@@ -1,0 +1,77 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ../partials/head %>
+</head>
+
+<body class="container-fluid" style="padding: 0%;">
+    <header>
+        <%- include ../partials/header %>
+    </header>
+    <div class="row">
+        <div class="col-sm-2">
+            <%- include ../partials/navbar %>
+        </div>
+        <div class="col-sm-8" style="margin-top:-2%;">
+            <main>
+                <div class="container col-sm-10" style="margin-top: 1%;background-color:whitesmoke;">
+                    <div align="center">
+                        <p style="padding: 0%;font-size: 34px;">
+                            <%=msg%>
+                        </p>
+                    </div>
+                    <div align="center">
+                        <p style="padding: 0%;font-size: 34px;">Update User Profile</p>
+                    </div>
+                    <div class="responsive-login-form allSides" style="height : auto">
+                        <div class="col-sm-12">
+                            <form method="post" action="/updateuser">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Basic Info</div>
+                                    <div class="panel-body">
+                                        <label>Email:
+                                            <%=user.email%><br>Role:
+                                            <%=user.role%></label><br>
+                                        <label>Name:<input type="text" name="name" class="form-control col-sm-12" value="<%=user.name%>"></label>
+                                        <label>D.O.B:<input type="text" name="dob" class="form-control col-sm-12" value="<%=user.dob%>"></label>
+                                        <label>Gender:<input type="text" name="gender" class="form-control col-sm-12"
+                                                value="<%=user.gender%>"></label>
+                                    </div>
+                                </div>
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">Contact Info</div>
+                                    <div class="panel-body">
+                                        <label>Phone:<input type="text" name="Phone" class="form-control" value="<%=user.phone%>"></label>
+                                        <label>City:<input type="text" name="city" class="form-control" value="<%=user.city%>"></label>
+                                    </div>
+                                </div>
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">Personal Info</div>
+                                    <div class="panel-body">
+                                        <label>Interset:<input type="text" name="interest" class="form-control" value="<%=user.interset%>"></label><br>
+                                        <input type="text" name="city" class="form-control" placeholder="Anything else.."><br />
+                                    </div>
+                                </div>
+                                <div class="col-sm-8 form-group">
+                                    <a href="/changepassword" class="btn btn-warning" role="button">Change
+                                        Password</a><br /><br>
+                                    <input class="btn btn-success" type='submit' value='submit' />
+                                    <a class="btn btn-danger" href='/updateuser'>Cancel</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <footer>
+        <%- include ../partials/footer %>
+    </footer>
+
+</body>
+
+</html>

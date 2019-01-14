@@ -1,0 +1,64 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ../partials/head %>
+</head>
+
+<body class="container-fluid">
+    <header>
+        <%- include ../partials/header %>
+    </header>
+    <div class="row">
+        <div class="col-sm-2">
+            <%- include ../partials/navbar %>
+        </div>
+        <div class="col-sm-10">
+            <div style="background-color: whitesmoke;height:100%;">
+                <main>
+                    <div class="col-sm-12">
+                        <div class="rows col-sm-18">
+                            <div class="cols col-sm-10">
+                                <a href="/home" role='button' class="btn btn-primary">Community</a>
+                                <a href="/searchcommunity" class="btn btn-primary" role='button'>Search</a>
+                            </div>
+                            <div class="cols col-sm-2" align="right">
+                                <% if (user.role!='User') { %>
+                                <a href='/createcommunity' role="button" class="btn btn-primary" style="align-content: left;color: darkred;">Create</a>
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="jumbotron">
+                            <% comms.forEach(function(comm) { %>
+                            <div class="container col-sm-12">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <a href="/communityprofile/<%=comm._id%>" id="<%=comm._id%>" style="color: darkred;font-size: medium;">
+                                            <%= comm.name %></a>
+                                        <a href="/communityprofile/members/<%=comm._id%>" style="font-size:small;"><span
+                                                class="label label-success">Members
+                                                <%=comm.memberlen%></span></a>
+                                    </div>
+                                    <div class="panel-body">
+                                        <p style="color:green">
+                                            <%= comm.desc %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <%- include ../partials/footer %>
+    </footer>
+
+</body>
+
+</html>

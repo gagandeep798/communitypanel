@@ -1,0 +1,82 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ../partials/head %>
+</head>
+
+<body class="container-fluid">
+    <header>
+        <%- include ../partials/header %>
+    </header>
+    <div class="row">
+        <div class="col-sm-2">
+            <%- include ../partials/navbar %>
+        </div>
+        <div class="col-sm-8" style="height:100%;width:100%;background-color:whitesmoke;">
+            <div align="right"><a href="/updateuser" class="btn btn-info" role="button">Edit</a></div>
+            <main>
+                <img src="default.jpg" height="42" width="42" class="img-responsive site_logo">
+                <div class="responsive-login-form allSides col-sm-12">
+                    <div class="container col-sm-6">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Email</div>
+                            <div class="panel-body">
+                                <%=user.email%>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container col-sm-6">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Gender</div>
+                            <div class="panel-body">
+                                <%=user.gender%>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container col-sm-6">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Name</div>
+                            <div class="panel-body">
+                                <%=user.name%>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container col-sm-6">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">City</div>
+                            <div class="panel-body">
+                                <%=user.city%>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container col-sm-6">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">D.O.B</div>
+                            <div class="panel-body">
+                                <%=user.dob%>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container col-sm-6">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Phone</div>
+                            <div class="panel-body">
+                                <%=user.phone%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+    <footer>
+        <%- include ../partials/footer %>
+    </footer>
+
+</body>
+
+</html>
