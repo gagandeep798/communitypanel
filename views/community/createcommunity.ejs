@@ -18,12 +18,20 @@
         <div class="col-sm-10">
             <div class="col-sm-9" style="height: 100%;background-color:whitesmoke;">
                 <main>
-                    <p>
-                        <%=msg%>
-                    </p>
                     <div class="responsive-login-form allSides col-sm-12">
                         <div align="center">
                             <p style="padding: 1%;font-size: 34px;">Create Community</p>
+                            <p>
+                                <% if (smsg) { %>
+                                <strong class="alert alert-success">
+                                    <%=smsg%></strong>
+                                <% } %>
+                                <% if (dmsg) { %>
+                                <strong class="alert alert-danger">
+                                    <%=dmsg%></strong>
+                                <% } %>
+                                <br>
+                            </p>
                         </div>
                         <div class="col-sm-12" style="border: blue">
                             <% if (user.role!='User') { %>

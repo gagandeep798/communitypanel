@@ -50,8 +50,7 @@
                                             align="left">
                                         <a href="/communityprofile/<%=comm._id%>" id="<%=comm._id%>" style="color: darkred;font-size: medium;">
                                             <%= comm.name %></a>
-                                        <a href="/communityprofile/members/<%=comm._id%>" style="font-size:small;"><span
-                                                class="label label-success">Members
+                                        <a style="font-size:small;"><span class="label label-success">Members
                                                 <%=comm.user.length%></span></a>
                                     </div>
                                     <% if (comm.rule==='Direct') { %>

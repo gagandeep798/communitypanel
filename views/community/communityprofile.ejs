@@ -75,14 +75,45 @@
                     <div class="row">
                         <div class="col1">
                             <div class="panel panel-default">
-                                <div class="panel-heading">Members<a href="/communitymembers/user/<%=comm._id%>" style="float:right;">view
-                                        all</a></div>
+                                <div class="panel-heading">Members
+                                    <% if (mem==1) { %><a href="/communitymembers/user/<%=comm._id%>" style="float:right;">view
+                                        all</a>
+                                    <% } %>
+                                </div>
                                 <div class="panel-body">
+                                    <center>
+                                        <% if (mem==0) { %>
+                                        <% if (comm.rule==='Direct') { %>
+                                        <div class="col-sm-4">
+                                            <form method="post" action="/joincommunity/<%=comm._id%>">
+                                                <input type="submit" class="btn btn-primary" id="<%= comm._Id%>" value="Join">
+                                            </form>
+                                        </div>
+                                        <% } %>
+                                        <% if (comm.rule==='Permission') { %>
+                                        <div class="col-sm-4">
+                                            <form method="post" action="/asktojoincommunity/<%=comm._id%>">
+                                                <input type="submit" class="btn btn-primary" id="<%= comm._Id%>" value="Ask to Join">
+                                            </form>
+                                        </div>
+                                        <% } %>
+                                        <% } %>
+
+                                        <% if (mem==2) { %>
+                                        <div class="col-sm-4" align="right">
+                                            <form method="post" action="/cancelrequest/<%=comm._id%>">
+                                                <input type="submit" class="btn btn-primary" id="<%= comm._Id%>" value="Cancel Request">
+                                            </form>
+                                        </div>
+                                        <% } %>
+                                    </center>
+                                    <% if (mem==1) { %>
                                     <% if (ulists) { %>
                                     <% ulists.forEach(function(ulist) { %>
                                     <img src="/images/default.jpg" class="rounded-circle img-thumbnail" height="25%"
                                         width="20%">
                                     <% }); %>
+                                    <% } %>
                                     <% } %>
                                 </div>
                                 <div class="panel-footer">

@@ -11,9 +11,9 @@ var UserSchema = mongoose.Schema({
     interest: { type: String, default: '' },
     journey: { type: String, default: '' },
     expectation: { type: String, default: '' },
-    activated: { type: String, default: '' },
+    activated: { type: String, default: 'Deactivated' },
     role: { type: String, default: '' },
-    status: { type: String, default: 'Pending' },
+    status: { type: Number, default: 1 },
     comm: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Community'

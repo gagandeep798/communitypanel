@@ -17,12 +17,19 @@
         </div>
         <div class="col-sm-10">
             <main style="height:100%;width:50%;background-color:whitesmoke;">
-                <p align="center">
-                    <%=msg%>
-                </p>
                 <div class="responsive-login-form allSides">
                     <div align="center">
                         <p style="padding: 1%;font-size: 34px;">Add User</p>
+                        <p>
+                            <% if (smsg) { %>
+                            <strong class="alert alert-success">
+                                <%=smsg%></strong>
+                            <% } %>
+                            <% if (dmsg) { %>
+                            <strong class="alert alert-danger">
+                                <%=dmsg%></strong>
+                            <% } %>
+                        </p>
                     </div>
                     <div class="col-sm-12">
                         <form method="post" action="/admin/adduser">

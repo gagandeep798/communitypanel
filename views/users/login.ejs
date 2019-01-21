@@ -13,13 +13,13 @@
             <div class="responsive-login-form allSides col-sm-8" style="height: 340px;background-color: #fff;">
                 <div align="center">
                     <p style="padding: 1%;font-size: 34px;">Log Into Your Account</p>
+                    <% if (dmsg) { %>
+                    <strong class="alert alert-danger">
+                        <%=dmsg%></strong><br />
+                    <% } %>
                 </div>
                 <div class="col-sm-12">
-                    <div>
-                        <p style="text-decoration-color: red">
-                            <%= msg %>
-                        </p>
-                    </div>
+                    <br />
                     <form method="post" action="/">
                         <div class="col-sm-12">
                             <div class="form-group" style="margin: 10px">

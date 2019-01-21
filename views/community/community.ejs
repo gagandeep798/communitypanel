@@ -45,7 +45,7 @@
                                             <%= owner.name %></a>
                                         <a href="/communityprofile/members/<%=owner._id%>" style="font-size:small;"><span
                                                 class="label label-success">Members
-                                                <%=owner.memberlen%></span></a>
+                                                <%=owner.user.length%></span></a>
                                     </div>
                                     <div class="col-sm-4" align="right">
                                         <a href="/communityprofile/<%=owner._id%>" class="btn btn-success" role="button"
@@ -69,7 +69,7 @@
                                             <%= comm.name %></a>
                                         <a href="/communityprofile/members/<%=comm._id%>" style="font-size:small;"><span
                                                 class="label label-success">Members
-                                                <%=comm.memberlen%></span></a>
+                                                <%=comm.user.length%></span></a>
                                         <% if (comm.id===user.pending) { %>
                                         <a style="font-size:small;"><span class="label label-danger">Pending</span></a>
                                         <% } %>
@@ -91,7 +91,7 @@
                                             <%= invitie.name %></a>
                                         <a href="/communityprofile/members/<%=invitie._id%>" style="font-size:small;"><span
                                                 class="label label-success">Members
-                                                <%=invitie.memberlen%></span></a>
+                                                <%=invitie.user.length%></span></a>
                                         <a style="font-size:small;"><span class="label label-danger">Invitation</span></a>
                                     </div>
                                 </div>
@@ -108,8 +108,8 @@
                                             align="left">
                                         <a href="/communityprofile/<%=pending._id%>" id="<%=pending._id%>" style="color: darkred;font-size: medium;">
                                             <%= pending.name %></a>
-                                        <a href="" style="font-size:small;"><span class="label label-success">Members
-                                                <%=pending.memberlen%></span></a>
+                                        <a style="font-size:small;"><span class="label label-success">Members
+                                                <%=pending.user.length%></span></a>
                                         <a style="font-size:small;"><span class="label label-danger">Pending</span></a>
                                     </div>
                                 </div>
