@@ -1,0 +1,87 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ../partials/head %>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script>
+
+        // $(document).ready(function () {
+        //     $('#example').DataTable({
+        //         data: dataSet,
+        //         columns: [
+        //             { title: "Name" },
+        //             { title: "Position" },
+        //             { title: "Office" },
+        //             { title: "Extn." },
+        //             { title: "Start date" },
+        //             { title: "Salary" }
+        //         ]
+        //     });
+        // });
+        $(document).ready(function () {
+            $('#example').dataTable({
+                "processing": true,
+                'serverSide': true,
+                'ajax': {
+                    'url': "/table",
+                    'type': "GET"
+                },
+                'data': 'data',
+                'columns': [
+                    { 'title': 'Usename/Email', 'data': 'name', 'orderable': true, 'searchable': true, 'sClass': 'tableUname' },
+                    { 'title': 'Phone', 'data': 'phone', 'orderable': false, 'searchable': false, 'sClass': 'tablePhone' },
+                    { 'title': 'City', 'data': 'city', 'orderable': true, 'searchable': true, 'sClass': 'tableCity' },
+                    { 'title': 'Status', 'data': 'firsttime', 'orderable': true, 'searchable': false, 'sClass': 'tableStatus' },
+                    { 'title': 'Role', 'data': 'role', 'orderable': true, 'searchable': false, 'sClass': 'tableRole' },
+                    { 'title': 'Active', 'data': 'active', 'orderable': true, 'searchable': false, 'sClass': 'tableActivated' },
+                    { 'title': "Actions", 'data': null, 'orderable': true, 'searchable': false, 'sClass': 'tableAction' }
+                ]
+            });
+        });
+    </script>
+
+</head>
+
+<body class="container-fluid">
+    <header>
+        <%- include ../partials/header %>
+    </header>
+    <div class="row">
+        <div class="col-sm-2">
+            <%- include ../partials/navbar %>
+        </div>
+        <div class="col-sm-10">
+            <main>
+                <table id="example" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Usename/Email</th>
+                            <th>Phone</th>
+                            <th>City</th>
+                            <th>Status</th>
+                            <th>Role</th>
+                            <th>Active</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+                </table>
+            </main>
+        </div>
+    </div>
+    <footer>
+        <%- include ../partials/footer %>
+    </footer>
+
+
+</body>
+
+</html>

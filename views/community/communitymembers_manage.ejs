@@ -1,0 +1,179 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <%- include ../partials/head %>
+    <style>
+        hr {
+            display: block;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            margin-left: auto;
+            margin-right: auto;
+            border-style: inset;
+            border-width: 3px;
+        }
+
+        .col1 {
+            float: left;
+            width: 25%;
+            padding: 10px;
+            height: 300px;
+        }
+
+        .col2 {
+            float: left;
+            width: 75%;
+            padding: 10px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body class="container-fluid">
+    <header>
+        <%- include ../partials/header %>
+    </header>
+    <div class="rows">
+        <div class="col-sm-2" style="margin-left: -1%;">
+            <%- include ../partials/navbar %>
+        </div>
+        <div class="col-sm-10" style="background-color: whitesmoke;height:100;">
+            <main style="margin-top:1%;margin-bottom: -1%;">
+                <div class="col-sm-12">
+                    <div class="row cols-sm-12">
+                        <div class="col cols-sm-2"><img src="/images/default.jpg" class=" rounded img-thumbnail float-left"
+                                height="150" width="150"></div>
+                        <div class='col cols-sm-6' align="left">
+                            <p style="font-size: 16px">
+                                <h1>
+                                    <%=comm.name%>
+                                </h1>
+                            </p>
+                        </div>
+                        <div class="container col cols-sm-5">
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                    Wide
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-left">
+                                    <li><a href="#">Discussions</a></li>
+                                    <li><a href="/communitymembers/manage/role<%=comm._id%>">Manage Community</a></li>
+                                    <li><a href="/communityprofile/<%=comm._id%>">Community Profile</a></li>
+                                    <li><a href="/communitymembers/user/<%=comm._id%>">Community Members</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col1">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <ul>
+                                        <li>
+                                            <a href='/communitymembers/manage/user/<%=comm._id%>'>Users(
+                                                <%=uno%>)</a>
+                                        </li>
+                                        <li>
+                                            <a href='/communitymembers/manage/admin/<%=comm._id%>'>Admins(
+                                                <%=ano%>)</a>
+                                        </li>
+                                        <li>
+                                            <a href='/communitymembers/manage/request/<%=comm._id%>'>Requests(
+                                                <%=rno%>)</a>
+                                        </li>
+                                        <li>
+                                            <a href='/communitymembers/manage/invitedUser/<%=comm._id%>'>Invited Users(
+                                                <%=ino%>)</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" align="center">Members</div>
+                                <div class="panel-body col-sm-12">
+                                    <div>
+                                        <% if (role=='user') { %>
+                                        <% ulists.forEach(function(ulist) { %>
+                                        <div>
+                                            <form></form><img src="/images/default.jpg" class="rounded-circle img-thumbnail"
+                                                height="5%" width="5%">
+                                            <%=ulist.name%>
+                                            <% if (admin==1) { %>
+                                            <a href='community/<%=comm._id%>/remove' class="btn btn-warning" style="float:right;">X</a>
+                                            <a href='/cancel/<%=comm._id%>' class="btn btn-danger" style="float:right;">^</a></form>
+                                            <% } %><br>
+                                            <% }); %>
+                                            <% } %>
+                                        </div>
+                                        <% if (role=='admin') { %>
+                                        <div>
+                                            <form><img src="/images/default.jpg" class="rounded-circle img-thumbnail"
+                                                    height="5%" width="5%">
+                                                <%=olist.name%>
+                                                <% if (admin==1) { %>
+                                                <a href='community/<%=comm._id%>/remove' class="btn btn-danger" style="float:right;">X</a>
+                                                <a href='/cancel/<%=comm._id%>' class="btn btn-warning" style="float:right;">^</a></form>
+                                            <% } %><br>
+                                        </div>
+                                        <% alists.forEach(function(alist) { %>
+                                        <div>
+                                            <form><img src="/images/default.jpg" class="rounded-circle img-thumbnail"
+                                                    height="5%" width="5%">
+                                                <%=alist.name%>
+                                                <% if (admin==1) { %>
+                                                <a href='community/<%=comm._id%>/remove' class="btn btn-danger" style="float:right;">X</a>
+                                                <a href='/cancel/<%=comm._id%>' class="btn btn-warning" style="float:right;">^</a></form>
+                                            <% } %><br>
+                                            <% }); %>
+                                            <% } %>
+                                        </div>
+                                        <% if (role=='request') { %>
+                                        <% rlists.forEach(function(rlist) { %>
+                                        <div>
+                                            <form><img src="/images/default.jpg" class="rounded-circle img-thumbnail"
+                                                    height="5%" width="5%">
+                                                <%=rlist.name%>
+                                                <% if (admin==1) { %>
+                                                <a href='community/<%=comm._id%>/remove' class="btn btn-danger" style="float:right;">X</a>
+                                                <a href='/cancel/<%=comm._id%>' class="btn btn-success" style="float:right;">^</a></form>
+                                            <% } %><br>
+                                        </div>
+                                        <% }); %>
+                                        <% } %>
+                                        <% if (role=='invitedUser'&&ilists) { %>
+                                        <% ilists.forEach(function(ilist) { %>
+                                        <div>
+                                            <form><img src="/images/default.jpg" class="rounded-circle img-thumbnail"
+                                                    height="5%" width="5%">
+                                                <%=ilist.name%>
+                                                <% if (admin==1) { %>
+                                                <a href='community/<%=comm._id%>/remove' class="btn btn-danger" style="float:right;">X</a>
+                                                <a href='/cancel/<%=comm._id%>' class="btn btn-warning" style="float:right;">^</a></form>
+                                            <% } %><br>
+                                            <% }); %>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <footer>
+            <%- include ../partials/footer %>
+        </footer>
+</body>
+
+</html>

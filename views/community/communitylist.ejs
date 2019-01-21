@@ -17,7 +17,38 @@
         </div>
         <div class="col-sm-10">
             <main>
-                <%= clists %>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>
+                            <p> </p>
+                        </th>
+                        <th>Rule</th>
+                        <th>
+                            <p> </p>
+                        </th>
+                        <th>Owner</th>
+                    </tr>
+                    <% clists.forEach(function(clist) { %>
+                    <tr>
+                        <td>
+                            <%= clist.name%>
+                        </td>
+                        <td>
+                            <p> </p>
+                        </td>
+                        <td>
+                            <%= clist.rule%>
+                        </td>
+                        <td>
+                            <p> </p>
+                        </td>
+                        <td>
+                            <%= clist.owner%>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </table>
             </main>
         </div>
     </div>

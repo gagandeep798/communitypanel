@@ -19,56 +19,60 @@
         <div class="col-sm-10">
             <div style="background-color: whitesmoke;height:100%;">
                 <main>
-                    <div class="rows col-sm-12">
-                        <div class="cols col-sm-8">
-                            <a href="/home" role='button' class="btn btn-primary">Community</a>
-                            <a href="/searchcommunity" class="btn btn-primary" role='button'>Search</a>
-                        </div>
-                        <div class="cols col-sm-4" align="right">
-                            <form method="post" action="/searchcommunity">
-                                <input type="text" placeholder="Search.." name="search"><button class="btn btn-info"
-                                    role="button" type="submit">Submit</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div align="center">
-                        <p style="font-size: larger;color: red;">
-                            <%=msg%>
-                        </p>
-                    </div>
-                    <div class="jumbotron">
-                        <% comms.forEach(function(comm) { %>
-                        <div class="responsive-login-form allSides col-sm-12">
-                            <div class="panel-group col-sm-12">
-                                <div class="panel panel-info col-sm-12">
-                                    <div class="panel-heading rows">
-                                        <a href="/communityprofile/<%=comm._id%>" style="color: blue;font-size: medium;"
-                                            id="<%= comm._Id%>">
-                                            <%= comm.name %></a>
-                                        <a style="font-size:small;"><span class="label label-success">Members
-                                                <%=comm.memberlen%></span></a>
-                                        <div align="right">
-                                            <% if (comm.rule==='Direct') { %>
-                                            <a href="/joincommunity/<%=comm._id%>" class="btn btn-primary" role="button"
-                                                id="<%= comm._Id%>">Join</a>
-                                            <% } %>
-                                            <% if (comm.rule==='Permission') { %>
-                                            <a href="/asktojoincommunity/<%=comm._id%>" class="btn btn-primary" role="button"
-                                                id="<%= comm._Id%>">Ask
-                                                to Join</a>
-                                            <% } %>
-                                        </div>
-                                    </div>
-                                    <div class="panel-body">
-                                        <p style="color:black">
-                                            <%= comm.desc %>
-                                        </p>
-                                    </div>
-                                </div>
+                    <div class="col-sm-12">
+                        <div class="rows col-sm-12">
+                            <div class="cols col-sm-8">
+                                <br>
+                                <a href="/home" role='button' class="btn btn-primary">My Community</a>
+                                <a href="/searchcommunity" class="btn btn-primary" role='button'>Search</a>
+                            </div>
+                            <div class="cols col-sm-4" align="right">
+                                <br>
+                                <form method="post" action="/searchcommunity">
+                                    <input type="text" placeholder="Search.." name="search"><button class="btn btn-info"
+                                        role="button" type="submit">Submit</button>
+                                </form>
+                                <br>
                             </div>
                         </div>
-                        <% }); %>
-                    </div>
+                        <div align="center">
+                            <p style="font-size: larger;color: red;">
+                                <%=msg%>
+                            </p>
+                        </div>
+                        <div class="jumbotron">
+                            <% if (comms) { %>
+                            <% comms.forEach(function(comm) { %>
+                            <div class="container col-sm-12">
+                                <div class="panel panel-primary panel-heading col-sm-12">
+                                    <div class="col-sm-8" style="margin-left: -1%;">
+                                        <img src="/images/default.jpg" class="img-thumbnail" height="50" width="50"
+                                            align="left">
+                                        <a href="/communityprofile/<%=comm._id%>" id="<%=comm._id%>" style="color: darkred;font-size: medium;">
+                                            <%= comm.name %></a>
+                                        <a href="/communityprofile/members/<%=comm._id%>" style="font-size:small;"><span
+                                                class="label label-success">Members
+                                                <%=comm.user.length%></span></a>
+                                    </div>
+                                    <% if (comm.rule==='Direct') { %>
+                                    <div class="col-sm-4" align="right">
+                                        <form method="post" action="/joincommunity/<%=comm._id%>">
+                                            <input type="submit" class="btn btn-primary" id="<%= comm._Id%>" value="Join">
+                                        </form>
+                                    </div>
+                                    <% } %>
+                                    <% if (comm.rule==='Permission') { %>
+                                    <div class="col-sm-4" align="right">
+                                        <form method="post" action="/asktojoincommunity/<%=comm._id%>">
+                                            <input type="submit" class="btn btn-primary" id="<%= comm._Id%>" value="Ask to Join">
+                                        </form>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <% }); %>
+                            <% } %>
+                        </div>
                 </main>
             </div>
         </div>

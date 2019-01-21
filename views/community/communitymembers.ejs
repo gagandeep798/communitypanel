@@ -64,7 +64,7 @@
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-left">
                                     <li><a href="#">Discussions</a></li>
-                                    <li><a href="/communitymembers/manage/role<%=comm._id%>">Manage Community</a></li>
+                                    <li><a href="/communitymembers/manage/role/<%=comm._id%>">Manage Community</a></li>
                                     <li><a href="/communityprofile/<%=comm._id%>">Community Profile</a></li>
                                     <li><a href="/communitymembers/user/<%=comm._id%>">Community Members</a></li>
                                 </ul>
@@ -72,55 +72,43 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="row">
-                        <div class="col1">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Members<a href="/communitymembers/user/<%=comm._id%>" style="float:right;">view
-                                        all</a></div>
-                                <div class="panel-body">
-                                    <% if (ulists) { %>
-                                    <% ulists.forEach(function(ulist) { %>
-                                    <img src="/images/default.jpg" class="rounded-circle img-thumbnail" height="25%"
-                                        width="20%">
-                                    <% }); %>
-                                    <% } %>
-                                </div>
-                                <div class="panel-footer">
-                                    <%=ulistmem%> Members</div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Community Admins</div>
-                                <div class="panel-body">
-                                    <% if (olists) { %>
-                                    <p style="float: center;">
-                                        <img src="/images/default.jpg" class="rounded-circle img-thumbnail" height="25%"
-                                            width="20%">
-                                        <%=olists.email%>
-                                        <span class="label label-success">Owner</span><br>
-                                    </p>
-                                    <% } %>
-                                    <% if (alists) { %>
-                                    <% alists.forEach(function(alist) { %>
-                                    <img src="/images/default.jpg" class="rounded-circle img-thumbnail" height="25%"
-                                        width="20%">
-                                    <%=alist.email%>
-                                    <span class="label label-success">Admin</span><br>
-                                    <% }); %>
-                                    <% } %>
-                                </div>
-                            </div>
+                    <div class="cols col-sm-12">
+                        <div class="container">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="/communitymembers/admin/<%=comm._id%>">Admin
+                                        <%=ano%></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/communitymembers/user/<%=comm._id%>">User
+                                        <%=uno%></a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="col2">
+                        <div class="cols col-sm-12">
                             <div class="panel panel-default">
-                                <div class="panel-heading" align="center">About Community</div>
-                                <div class="panel-body" align="center">
-                                    <%=comm.description%>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" align="center">Public Discussions</div>
-                                <div class="panel-body" align="center">
-
+                                <div class="panel-body col-sm-12">
+                                    <div>
+                                        <% if (role=='user') { %>
+                                        <% ulists.forEach(function(ulist) { %>
+                                        <img src="/images/default.jpg" class="rounded-circle img-thumbnail" height="5%"
+                                            width="5%">
+                                        <%=ulist.name%><br>
+                                        <% }); %>
+                                        <% } %>
+                                    </div>
+                                    <div>
+                                        <% if (role=='admin') { %>
+                                        <img src="/images/default.jpg" class="rounded-circle img-thumbnail" height="5%"
+                                            width="5%">
+                                        <%=olist.name%><br>
+                                        <% alists.forEach(function(alist) { %>
+                                        <img src="/images/default.jpg" class="rounded-circle img-thumbnail" height="5%"
+                                            width="5%">
+                                        <%=alist.name%><br>
+                                        <% }); %>
+                                        <% } %>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -131,7 +119,6 @@
         <footer>
             <%- include ../partials/footer %>
         </footer>
-
 </body>
 
 </html>
