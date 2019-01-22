@@ -266,8 +266,8 @@ app.get('/communityprofile/:id', function (re, rs, next) {
                 mem = 1;
             }
             if (mem == 0) {
-                for (i = 0; i < data.owner.length; i++) {
-                    if (re.session.data._id == data.owner[i]._id) {
+                for (i = 0; i < data.admin.length; i++) {
+                    if (re.session.data._id == data.admin[i]._id) {
                         mem = 1; break;
                     }
                 }
