@@ -5,7 +5,6 @@ var CommunitySchema = mongoose.Schema({
     rule: { type: String, default: '' },
     image: { type: String, default: '' },
     date: { type: String, default: '' },
-    activated: { type: String, default: 'yes' },
 
     owner: {
         type: mongoose.Schema.Types.ObjectId,
