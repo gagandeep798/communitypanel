@@ -3,8 +3,6 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
 var DataTable = require('mongoose-datatable');
-var path = require('path');
-
 var app = a();
 
 mongoose.connect('mongodb://localhost/oneness', { useNewUrlParser: true });
@@ -25,7 +23,9 @@ app.use(session({
 }));
 
 mongoose.plugin(DataTable.init);
+
 require('./routes/routes')(app);
+
 app.listen(8000, function (err) {
     if (err) {
         console.log("listen err  " + err);
