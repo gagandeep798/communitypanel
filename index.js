@@ -25,9 +25,7 @@ app.use(session({
 }));
 
 mongoose.plugin(DataTable.init);
-require('./routes/user')(app);
-require('./routes/community')(app);
-
+require('./routes/routes')(app);
 app.listen(8000, function (err) {
     if (err) {
         console.log("listen err  " + err);

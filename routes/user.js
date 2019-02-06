@@ -79,6 +79,13 @@ module.exports = function (app) {
         })
     })
 
+    app.post('/ulist', function (re, rs) {
+        Person.find({}, (err, res) => {
+            console.log(res);
+            rs.json(res);
+        })
+    })
+
     app.post('/userdetails', function (re, rs) {
         Person.updateOne(
             { "email": re.session.data.email },
