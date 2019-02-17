@@ -2,15 +2,14 @@ var Person = require('../../../models/user');
 var Community = require('../../../models/community');
 module.exports = function (app) {
     app.get('/userlist', function (re, rs) { // userlist
-        Person.find({}, { _id: 0 }, function (err, res) {
-            var list = res;
-            rs.render("users/table", { user: re.session.data, ulists: list });
-        })
+        rs.render("users/userlist", { user: re.session.data });
     })
-    app.post('/ulist', function (re, rs) {
+    app.post('/userlist', function (re, rs) {
         Person.find({}, (err, res) => {
-            console.log(res);
-            rs.json(res);
+            var data = JSON.stringify({
+                'data': res
+            })
+            rs.send(data);
         })
     })
 }

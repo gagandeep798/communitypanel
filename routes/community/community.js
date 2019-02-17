@@ -1,5 +1,6 @@
 var Person = require('../../models/user');
 module.exports = function (app) {
+    require('./cancel/cancel')(app);
     require('./createcommunity/createcommunity')(app);
     require('./joining/joining')(app);
     require('./list/list')(app);

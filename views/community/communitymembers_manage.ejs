@@ -48,8 +48,8 @@
             <main style="margin-top:1%;margin-bottom: -1%;">
                 <div class="col-sm-12">
                     <div class="row cols-sm-12">
-                        <div class="col cols-sm-2"><img src="/images/default.jpg" class=" rounded img-thumbnail float-left"
-                                height="150" width="150"></div>
+                        <div class="col cols-sm-2"><img src="/images/default.jpg"
+                                class=" rounded img-thumbnail float-left" height="150" width="150"></div>
                         <div class='col cols-sm-6' align="left">
                             <p style="font-size: 16px">
                                 <h1>
@@ -105,24 +105,29 @@
                                         <% if (role=='user') { %>
                                         <% ulists.forEach(function(ulist) { %>
                                         <div>
-                                            <form></form><img src="/images/default.jpg" class="rounded-circle img-thumbnail"
-                                                height="5%" width="5%">
+                                            <form></form><img src="/images/default.jpg"
+                                                class="rounded-circle img-thumbnail" height="5%" width="5%">
                                             <%=ulist.name%>
                                             <% if (admin==1) { %>
-                                            <a href='community/<%=comm._id%>/remove' class="btn btn-warning" style="float:right;">X</a>
-                                            <a href='/cancel/<%=comm._id%>' class="btn btn-danger" style="float:right;">^</a></form>
+                                            <a href='community/<%=comm._id%>/remove' class="btn btn-warning"
+                                                style="float:right;">X</a>
+                                            <a href='/cancel/<%=comm._id%>' class="btn btn-danger"
+                                                style="float:right;">^</a></form>
                                             <% } %><br>
-                                            <% }); %>
-                                            <% } %>
                                         </div>
+                                        <% }); %>
+                                        <% } %>
+
                                         <% if (role=='admin') { %>
                                         <div>
                                             <form><img src="/images/default.jpg" class="rounded-circle img-thumbnail"
                                                     height="5%" width="5%">
                                                 <%=olist.name%>
                                                 <% if (admin==1) { %>
-                                                <a href='community/<%=comm._id%>/remove' class="btn btn-danger" style="float:right;">X</a>
-                                                <a href='/cancel/<%=comm._id%>' class="btn btn-warning" style="float:right;">^</a></form>
+                                                <a href='community/<%=comm._id%>/remove' class="btn btn-danger"
+                                                    style="float:right;">X</a>
+                                                <a href='/cancel/<%=comm._id%>' class="btn btn-warning"
+                                                    style="float:right;">^</a></form>
                                             <% } %><br>
                                         </div>
                                         <% alists.forEach(function(alist) { %>
@@ -131,8 +136,10 @@
                                                     height="5%" width="5%">
                                                 <%=alist.name%>
                                                 <% if (admin==1) { %>
-                                                <a href='community/<%=comm._id%>/remove' class="btn btn-danger" style="float:right;">X</a>
-                                                <a href='/cancel/<%=comm._id%>' class="btn btn-warning" style="float:right;">^</a></form>
+                                                <a href='community/<%=comm._id%>/remove' class="btn btn-danger"
+                                                    style="float:right;">X</a>
+                                                <a href='/cancel/<%=comm._id%>' class="btn btn-warning"
+                                                    style="float:right;">^</a></form>
                                             <% } %><br>
                                             <% }); %>
                                             <% } %>
@@ -144,8 +151,10 @@
                                                     height="5%" width="5%">
                                                 <%=rlist.name%>
                                                 <% if (admin==1) { %>
-                                                <a href='community/<%=comm._id%>/remove' class="btn btn-danger" style="float:right;">X</a>
-                                                <a href='/cancel/<%=comm._id%>' class="btn btn-success" style="float:right;">^</a></form>
+                                                <a href='community/<%=comm._id%>/remove' class="btn btn-danger"
+                                                    style="float:right;">X</a>
+                                                <a href='/cancel/<%=comm._id%>' class="btn btn-success"
+                                                    style="float:right;">^</a></form>
                                             <% } %><br>
                                         </div>
                                         <% }); %>
@@ -157,12 +166,14 @@
                                                     height="5%" width="5%">
                                                 <%=ilist.name%>
                                                 <% if (admin==1) { %>
-                                                <a href='community/<%=comm._id%>/remove' class="btn btn-danger" style="float:right;">X</a>
-                                                <a href='/cancel/<%=comm._id%>' class="btn btn-warning" style="float:right;">^</a></form>
+                                                <a href='community/<%=comm._id%>/remove' class="btn btn-danger"
+                                                    style="float:right;">X</a>
+                                                <a href='/cancel/<%=comm._id%>' class="btn btn-warning"
+                                                    style="float:right;">^</a></form>
                                             <% } %><br>
-                                            <% }); %>
-                                            <% } %>
                                         </div>
+                                        <% }); %>
+                                        <% } %>
                                     </div>
                                 </div>
                             </div>

@@ -27,7 +27,8 @@
                             <div class="cols col-sm-2" align="right">
                                 <% if (user.role!='User') { %>
                                 <br>
-                                <a href='/createcommunity' role="button" class="btn btn-primary" style="align-content: left;color: darkred;">Create</a>
+                                <a href='/createcommunity' role="button" class="btn btn-primary"
+                                    style="align-content: left;color: darkred;">Create</a>
                                 <br>
                                 <% } %>
                             </div>
@@ -41,10 +42,11 @@
                                     <div class="col-sm-8">
                                         <img src="/images/default.jpg" class="img-thumbnail" height="50" width="50"
                                             align="left">
-                                        <a href="/communityprofile/<%=owner._id%>" id="<%=owner._id%>" style="color: darkred;font-size: medium;">
+                                        <a href="/communityprofile/<%=owner._id%>" id="<%=owner._id%>"
+                                            style="color: darkred;font-size: medium;">
                                             <%= owner.name %></a>
-                                        <a href="/communityprofile/members/<%=owner._id%>" style="font-size:small;"><span
-                                                class="label label-success">Members
+                                        <a href="/communityprofile/members/<%=owner._id%>"
+                                            style="font-size:small;"><span class="label label-success">Members
                                                 <%=owner.user.length%></span></a>
                                     </div>
                                     <div class="col-sm-4" align="right">
@@ -65,14 +67,12 @@
                                     <div class="col-sm-8">
                                         <img src="/images/default.jpg" class="img-thumbnail" height="50" width="50"
                                             align="left">
-                                        <a href="/communityprofile/<%=comm._id%>" id="<%=comm._id%>" style="color: darkred;font-size: medium;">
+                                        <a href="/communityprofile/<%=comm._id%>" id="<%=comm._id%>"
+                                            style="color: darkred;font-size: medium;">
                                             <%= comm.name %></a>
                                         <a href="/communityprofile/members/<%=comm._id%>" style="font-size:small;"><span
                                                 class="label label-success">Members
                                                 <%=comm.user.length%></span></a>
-                                        <% if (comm.id===user.pending) { %>
-                                        <a style="font-size:small;"><span class="label label-danger">Pending</span></a>
-                                        <% } %>
                                     </div>
                                 </div>
                             </div>
@@ -87,12 +87,14 @@
                                     <div class="col-sm-8">
                                         <img src="/images/default.jpg" class="img-thumbnail" height="50" width="50"
                                             align="left">
-                                        <a href="/communityprofile/<%=invitie._id%>" id="<%=invitie._id%>" style="color: darkred;font-size: medium;">
+                                        <a href="/communityprofile/<%=invitie._id%>" id="<%=invitie._id%>"
+                                            style="color: darkred;font-size: medium;">
                                             <%= invitie.name %></a>
-                                        <a href="/communityprofile/members/<%=invitie._id%>" style="font-size:small;"><span
-                                                class="label label-success">Members
+                                        <a href="/communityprofile/members/<%=invitie._id%>"
+                                            style="font-size:small;"><span class="label label-success">Members
                                                 <%=invitie.user.length%></span></a>
-                                        <a style="font-size:small;"><span class="label label-danger">Invitation</span></a>
+                                        <a style="font-size:small;"><span
+                                                class="label label-danger">Invitation</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -106,11 +108,18 @@
                                     <div class="col-sm-8">
                                         <img src="/images/default.jpg" class="img-thumbnail" height="50" width="50"
                                             align="left">
-                                        <a href="/communityprofile/<%=pending._id%>" id="<%=pending._id%>" style="color: darkred;font-size: medium;">
+                                        <a href="/communityprofile/<%=pending._id%>" id="<%=pending._id%>"
+                                            style="color: darkred;font-size: medium;">
                                             <%= pending.name %></a>
                                         <a style="font-size:small;"><span class="label label-success">Members
                                                 <%=pending.user.length%></span></a>
                                         <a style="font-size:small;"><span class="label label-danger">Pending</span></a>
+                                    </div>
+                                    <div class="col-sm-4" align="right">
+                                        <form method="post" action="/cancelcommunity/<%=pending._id%>">
+                                            <input type="submit" class="btn btn-danger" id="<%=pending._id%>"
+                                                value="Cancel">
+                                        </form>
                                     </div>
                                 </div>
                             </div>
