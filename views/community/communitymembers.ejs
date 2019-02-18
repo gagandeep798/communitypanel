@@ -4,10 +4,6 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <%- include ../partials/head %>
     <style>
         hr {
@@ -48,8 +44,8 @@
             <main style="margin-top:1%;margin-bottom: -1%;">
                 <div class="col-sm-12">
                     <div class="row cols-sm-12">
-                        <div class="col cols-sm-2"><img src="/images/default.jpg" class=" rounded img-thumbnail float-left"
-                                height="150" width="150"></div>
+                        <div class="col cols-sm-2"><img src="/images/default.jpg"
+                                class=" rounded img-thumbnail float-left" height="150" width="150"></div>
                         <div class='col cols-sm-6' align="left">
                             <p style="font-size: 16px">
                                 <h1>
@@ -79,6 +75,7 @@
                                     <a class="nav-link " href="/communitymembers/admin/<%=comm._id%>">Admin
                                         <%=ano%></a>
                                 </li>
+                                <li class="nav-item"></li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/communitymembers/user/<%=comm._id%>">User
                                         <%=uno%></a>
@@ -91,21 +88,45 @@
                                     <div>
                                         <% if (role=='user') { %>
                                         <% ulists.forEach(function(ulist) { %>
-                                        <img src="/images/default.jpg" class="rounded-circle img-thumbnail" height="5%"
-                                            width="5%">
-                                        <%=ulist.name%><br>
+                                        <div class="col-sm-8" align="left">
+                                            <img src="/images/default.jpg" class="rounded-circle img-thumbnail"
+                                                height="5%" width="5%">
+                                            <%=ulist.name%>
+                                        </div>
+                                        <% if (user.role!='User') { %>
+                                        <div class="row col-sm-4" float="right">
+                                            <form method="post" action="/cancel/<%=ulist._id %>/<%=comm._id%>">
+                                                <div class="dropup col-sm-6">
+                                                    <button type="button" class="btn btn-primary dropdown-toggle"
+                                                        data-toggle="dropdown">
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="#">Link 1</a>
+                                                        <a class="dropdown-item" href="#">Link 2</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <button type="submit"
+                                                        class="btn btn-danger glyphicon glyphicon-remove"><span
+                                                            class="badge badge-danger"></span></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <% } %>
+                                        <br><br>
                                         <% }); %>
                                         <% } %>
                                     </div>
                                     <div>
-                                        <% if (role=='admin') { %>
+                                        <% if (role!='user') { %>
                                         <img src="/images/default.jpg" class="rounded-circle img-thumbnail" height="5%"
                                             width="5%">
                                         <%=olist.name%><br>
                                         <% alists.forEach(function(alist) { %>
                                         <img src="/images/default.jpg" class="rounded-circle img-thumbnail" height="5%"
                                             width="5%">
-                                        <%=alist.name%><br>
+                                        <%=alist.name%>
+                                        <br>
                                         <% }); %>
                                         <% } %>
                                     </div>

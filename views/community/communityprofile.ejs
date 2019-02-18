@@ -4,10 +4,6 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <%- include ../partials/head %>
     <style>
         hr {
@@ -48,8 +44,8 @@
             <main style="margin-top:1%;margin-bottom: -1%;">
                 <div class="col-sm-12">
                     <div class="row cols-sm-12">
-                        <div class="col cols-sm-2"><img src="/images/default.jpg" class=" rounded img-thumbnail float-left"
-                                height="150" width="150"></div>
+                        <div class="col cols-sm-2"><img src="/images/default.jpg"
+                                class=" rounded img-thumbnail float-left" height="150" width="150"></div>
                         <div class='col cols-sm-6' align="left">
                             <p style="font-size: 16px">
                                 <h1>
@@ -76,7 +72,8 @@
                         <div class="col1">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Members
-                                    <% if (mem==1) { %><a href="/communitymembers/user/<%=comm._id%>" style="float:right;">view
+                                    <% if (mem==1) { %><a href="/communitymembers/user/<%=comm._id%>"
+                                        style="float:right;">view
                                         all</a>
                                     <% } %>
                                 </div>
@@ -86,14 +83,16 @@
                                         <% if (comm.rule==='Direct') { %>
                                         <div class="col-sm-4">
                                             <form method="post" action="/joincommunity/<%=comm._id%>">
-                                                <input type="submit" class="btn btn-primary" id="<%= comm._Id%>" value="Join">
+                                                <input type="submit" class="btn btn-primary" id="<%= comm._Id%>"
+                                                    value="Join">
                                             </form>
                                         </div>
                                         <% } %>
                                         <% if (comm.rule==='Permission') { %>
                                         <div class="col-sm-4">
                                             <form method="post" action="/asktojoincommunity/<%=comm._id%>">
-                                                <input type="submit" class="btn btn-primary" id="<%= comm._Id%>" value="Ask to Join">
+                                                <input type="submit" class="btn btn-primary" id="<%= comm._Id%>"
+                                                    value="Ask to Join">
                                             </form>
                                         </div>
                                         <% } %>
@@ -102,7 +101,8 @@
                                         <% if (mem==2) { %>
                                         <div class="col-sm-4" align="right">
                                             <form method="post" action="/cancelrequest/<%=comm._id%>">
-                                                <input type="submit" class="btn btn-primary" id="<%= comm._Id%>" value="Cancel Request">
+                                                <input type="submit" class="btn btn-primary" id="<%= comm._Id%>"
+                                                    value="Cancel Request">
                                             </form>
                                         </div>
                                         <% } %>
