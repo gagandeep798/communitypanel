@@ -5,6 +5,10 @@
 
 <head>
     <%- include ../partials/head %>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
 </head>
 
 <body class="container-fluid">
@@ -17,45 +21,31 @@
         </div>
         <div class="col-sm-10">
             <main>
-                <table>
-                    <tr>
-                        <th>Name</th>
-                        <th>
-                            <p> </p>
-                        </th>
-                        <th>Rule</th>
-                        <th>
-                            <p> </p>
-                        </th>
-                        <th>Owner</th>
-                    </tr>
-                    <% clists.forEach(function(clist) { %>
-                    <tr>
-                        <td>
-                            <%= clist.name%>
-                        </td>
-                        <td>
-                            <p> </p>
-                        </td>
-                        <td>
-                            <%= clist.rule%>
-                        </td>
-                        <td>
-                            <p> </p>
-                        </td>
-                        <td>
-                            <%= clist.owner%>
-                        </td>
-                    </tr>
-                    <% }); %>
+                <table id="example1" class="table table-striped table-bordered" style="width:100%">
                 </table>
+
             </main>
         </div>
     </div>
     <footer>
         <%- include ../partials/footer %>
     </footer>
-
+    <script>
+        $(document).ready(function () {
+            $('#example1').DataTable({
+                "serverSide": true,
+                "ajax": {
+                    "url": "/communitylist",
+                    "type": "POST"
+                },
+                'columns': [
+                    { 'title': 'Name', 'data': 'name', 'orderable': true, 'searchable': true, 'sClass': 'tableName' },
+                    { 'title': 'Rule', 'data': 'rule', 'orderable': false, 'searchable': false, 'sClass': 'tableRule' },
+                    { 'title': 'Description', 'data': 'description', 'orderable': true, 'searchable': true, 'sClass': 'tableDescription' }
+                ],
+            });
+        });
+    </script>
 </body>
 
 </html>

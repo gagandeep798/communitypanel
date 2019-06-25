@@ -19,7 +19,7 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: true },
     resave: false,
-    cookie: { maxAge: 600000 }
+    cookie: { maxAge: 6000000 }
 }));
 
 mongoose.plugin(DataTable.init);

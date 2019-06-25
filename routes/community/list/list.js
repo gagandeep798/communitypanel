@@ -5,11 +5,13 @@ module.exports = function (app) {
         rs.render("community/communitylist", { user: re.session.data });
     })
     app.post('/communitylist', function (re, rs) {
-        Community.find({}, (err, res) => {
-            var data = JSON.stringify({
-                "data": res
+        Community.find({})
+            .populate('owner')
+            .exec(function (err, res) {
+                var data = JSON.stringify({
+                    'data': res
+                })
+                rs.send(data);
             })
-            rs.send(data);
-        })
     })
 }
